@@ -1,16 +1,31 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React, { Component } from 'react';
+import { SectionFeedBack } from './ButtonsSection/SectionFeedBack';
+
+export class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  changeGood = () => {
+    this.setState(prevState => {
+      return {
+        good: prevState.value + 1,
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <SectionFeedBack
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          onChangeClick={this.changeGood}
+        />
+      </div>
+    );
+  }
+}
