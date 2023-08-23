@@ -1,27 +1,28 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const Statictic = ({
   good,
   bad,
   neutral,
-  total,
+  totalFeedBack,
   feedbackPercentage,
 }) => {
   return (
     <div>
       <h3>STATICTICS</h3>
-      <p>
-        GOOD:<span>{good}</span>
-      </p>
-      <p>
-        NEUTRAL:<span>{neutral}</span>
-      </p>
-      <p>
-        BAD:<span>{bad}</span>
-      </p>
-      <p>Total:{total()}</p>
+      <p>GOOD:{good}</p>
+      <p>NEUTRAL:{neutral}</p>
+      <p>BAD:{bad}</p>
+      <p>Total:{totalFeedBack()}</p>
       <p>Positive feedBack:{feedbackPercentage()}%</p>
     </div>
   );
+};
+Statictic.propTypes = {
+  good: PropTypes.number,
+  bad: PropTypes.number,
+  neutral: PropTypes.number,
+  totalFeedBack: PropTypes.func,
+  feedbackPercentage: PropTypes.func,
 };

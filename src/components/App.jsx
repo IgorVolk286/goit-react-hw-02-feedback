@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionFeedBack } from './ButtonsSection/SectionFeedBack';
+import { SectionTitle } from './Section title/Section title';
 
 export class App extends Component {
   state = {
@@ -27,14 +27,14 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <SectionFeedBack
+        <SectionTitle
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
-          onChangeClickG={this.changeGood}
-          onChangeClickN={this.changeNeutral}
-          onChangeClickB={this.changeBad}
-          total={this.countTotalFeedback}
+          onChangeClickGood={this.changeGood}
+          onChangeClickNeutral={this.changeNeutral}
+          onChangeClickBad={this.changeBad}
+          totalFeedBack={this.countTotalFeedback}
           feedbackPercentage={this.countPositiveFeedbackPercentage}
         />
       </div>
