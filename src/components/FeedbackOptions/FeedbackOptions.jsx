@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { WrapButtons, Button } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({
   onChangeClickGood,
@@ -6,11 +7,11 @@ export const FeedbackOptions = ({
   onChangeClickBad,
 }) => {
   return (
-    <div>
-      <button onClick={onChangeClickGood}>GOOD</button>
-      <button onClick={onChangeClickNeutral}>NEUTRAL</button>
-      <button onClick={onChangeClickBad}>BAD</button>
-    </div>
+    <WrapButtons>
+      <Button onClick={onChangeClickGood}>GOOD</Button>
+      <Button onClick={onChangeClickNeutral}>NEUTRAL</Button>
+      <Button onClick={onChangeClickBad}>BAD</Button>
+    </WrapButtons>
   );
 };
 FeedbackOptions.propTypes = {

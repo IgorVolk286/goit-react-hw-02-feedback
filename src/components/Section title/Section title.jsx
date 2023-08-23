@@ -4,6 +4,7 @@ import { Statictic } from 'components/Statictic/Statictic';
 import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 
 import { Report } from 'notiflix/build/notiflix-report-aio';
+import { SectionFeedBack, Title } from './Section title.styled';
 export const SectionTitle = ({
   good,
   neutral,
@@ -15,8 +16,8 @@ export const SectionTitle = ({
   feedbackPercentage,
 }) => {
   return (
-    <section>
-      <h1>Please leave feedBack</h1>
+    <SectionFeedBack>
+      <Title>Please leave feedBack</Title>
       <FeedbackOptions
         onChangeClickGood={onChangeClickGood}
         onChangeClickNeutral={onChangeClickNeutral}
@@ -38,7 +39,7 @@ export const SectionTitle = ({
           'MAKE YOUR CHOOSE'
         )
       )}
-    </section>
+    </SectionFeedBack>
   );
 };
 SectionTitle.propTypes = {

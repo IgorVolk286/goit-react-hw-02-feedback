@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Item, TitleList } from './Statictic.styled';
 
 export const Statictic = ({
   good,
@@ -10,12 +11,14 @@ export const Statictic = ({
 }) => {
   return (
     <div>
-      <h3>STATICTICS</h3>
-      <p>GOOD:{good}</p>
-      <p>NEUTRAL:{neutral}</p>
-      <p>BAD:{bad}</p>
-      <p>Total:{totalFeedBack()}</p>
-      <p>Positive feedBack:{feedbackPercentage()}%</p>
+      <TitleList>STATICTICS</TitleList>
+      <ul>
+        <Item>GOOD:{good}</Item>
+        <Item>NEUTRAL:{neutral}</Item>
+        <Item>BAD:{bad}</Item>
+        <Item>Total:{totalFeedBack()}</Item>
+        <Item>Positive feedBack:{feedbackPercentage()}%</Item>
+      </ul>
     </div>
   );
 };
