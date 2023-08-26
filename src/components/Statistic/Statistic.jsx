@@ -18,11 +18,11 @@ export const Statistic = ({
         <Item>BAD:{bad}</Item>
         <Item>
           Total:
-          {() => totalFeedBack()}
+          {totalFeedBack()}
         </Item>
         <Item>
           Positive feedBack:
-          {feedBackPercentage}%
+          {feedBackPercentage()}%
         </Item>
       </ul>
     </div>
