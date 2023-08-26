@@ -1,21 +1,25 @@
 import PropTypes from 'prop-types';
 import { WrapButtons, Button } from './FeedbackOptions.styled';
-
-export const FeedbackOptions = ({
-  onChangeClickGood,
-  onChangeClickNeutral,
-  onChangeClickBad,
-}) => {
+import { nanoid } from 'nanoid';
+export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
   return (
     <WrapButtons>
-      <Button onClick={onChangeClickGood}>GOOD</Button>
-      <Button onClick={onChangeClickNeutral}>NEUTRAL</Button>
-      <Button onClick={onChangeClickBad}>BAD</Button>
+      {options.map(option => {
+        return (
+          <Button
+            type="button"
+            key={nanoid()}
+            onClick={() => onLeaveFeedback(option)}
+          >
+            {option}
+          </Button>
+        );
+      })}
     </WrapButtons>
   );
 };
+
 FeedbackOptions.propTypes = {
-  onChangeClickGood: PropTypes.func,
-  onChangeClickNeutral: PropTypes.func,
-  onChangeClickBad: PropTypes.func,
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
 };

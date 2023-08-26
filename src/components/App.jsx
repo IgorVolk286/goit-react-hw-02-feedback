@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { SectionTitle } from './Section title/Section title';
+import { SectionTitle } from './SectionTitle/SectionTitle';
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import { Statistic } from 'components/Statistic/Statistic';
+
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 export class App extends Component {
   state = {
@@ -8,15 +12,10 @@ export class App extends Component {
     bad: 0,
   };
 
-  changeGood = e => {
-    this.setState(prevState => ({ good: prevState.good + 1 }));
+  onChangeCount = name => {
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
-  changeNeutral = e => {
-    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  };
-  changeBad = e => {
-    this.setState(prevState => ({ bad: prevState.bad + 1 }));
-  };
+
   countTotalFeedback = () => {
     return this.state.good + this.state.bad + this.state.neutral;
   };
@@ -27,16 +26,27 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <SectionTitle
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          onChangeClickGood={this.changeGood}
-          onChangeClickNeutral={this.changeNeutral}
-          onChangeClickBad={this.changeBad}
-          totalFeedBack={this.countTotalFeedback}
-          feedbackPercentage={this.countPositiveFeedbackPercentage}
-        />
+        <SectionTitle titleSection={`Please leave feedBack`}>
+          <FeedbackOptions
+            onLeaveFeedback={this.onChangeCount}
+            options={Object.keys(this.state)}
+          />
+          {this.countTotalFeedback() !== 0 ? (
+            <Statistic
+              good={this.state.good}
+              bad={this.state.bad}
+              neutral={this.state.neutral}
+              totalFeedBack={this.countTotalFeedBack}
+              feedBackPercentage={this.countPositiveFeedbackPercentage}
+            />
+          ) : (
+            Report.warning(
+              ' Warning',
+              '""There is no feedback"',
+              'MAKE YOUR CHOOSE'
+            )
+          )}
+        </SectionTitle>
       </div>
     );
   }
